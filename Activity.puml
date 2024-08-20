@@ -1,0 +1,26 @@
+@startuml Activity
+
+:Apply for Admission;
+
+:Process Admission;
+if (Admission Approved?) then (Yes)
+    :Confirm Admission;
+else (No)
+    stop
+endif
+
+:Add Student to Subject;
+
+:Select an Action;
+if (Submit Assignment?) then (Yes)
+    :Submit Assignment;
+    :Create Grade;
+    :Add Grade to Subject;
+else (No)
+     :View Grades;
+     :Return Grades;
+     :Display Grades;
+endif
+
+:End;
+@enduml

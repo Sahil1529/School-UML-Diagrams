@@ -1,0 +1,33 @@
+@startuml UseCase
+left to right direction
+actor Student
+actor Teacher
+actor Parent
+actor adminstartor
+
+usecase "Submit Assignments" as U1
+usecase "View Grades" as U2
+usecase "Attend Class" as U3
+usecase "Assign Grades" as U4
+usecase "Communicate with Teachers" as U5
+usecase "View School Notice" as U6
+usecase "Register New Students" as U7
+usecase "Schedule Parent-Teacher Meetings" as U8
+usecase "Assign Teachers to Courses" as U9
+
+Student --> U1
+Student --> U2
+Student --> U3
+Student --> U6
+
+Teacher --> U4
+Teacher --> U6
+
+adminstartor --> U7
+adminstartor --> U9
+adminstartor --> U8
+
+Parent --> U2
+Parent --> U5
+Parent --> U6
+@enduml

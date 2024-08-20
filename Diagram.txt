@@ -1,0 +1,163 @@
+﻿
+ USE CASE :- 
+
+@startuml
+actor Student
+actor Teacher
+actor Parent
+actor adminstartor
+
+usecase "Submit Assignments" as UC1
+usecase "View Grades" as UC2
+usecase "Attend Class" as UC3
+usecase "Assign Grades" as UC4
+usecase "Communicate with Teachers" as UC5
+usecase "View School Notice" as UC6
+usecase "Register New Students" as UC7
+usecase "Schedule Parent-Teacher Meetings" as UC8
+usecase "Assign Teachers to Courses" as UC9
+
+Student --> UC1
+Student --> UC2
+Student --> UC3
+Student --> UC6
+
+Teacher --> UC4
+Teacher --> UC6
+
+adminstartor --> UC7
+adminstartor --> UC9
+adminstartor --> UC8
+
+Parent --> UC2
+Parent --> UC5
+Parent --> UC6
+@enduml
+
+
+CLASS DIAGRAM :- 
+
+
+@startuml
+class School {
+    +name: String
+    +address: String
+}
+
+class Student {
+    +studentID: String
+    +name: String
+    +gradeLevel: Integer
+    +viewGrades(): List<Grade>
+}
+
+class Teacher {
+    +teacherID: String
+    +name: String
+    +subject: String
+    +assignGrade(student: Student, grade: Grade): void
+}
+
+class Subject {
+    +SubjectID: String
+    +SubjectName: String
+    +Grades: Integer
+
+}
+
+class Grade {
+    +gradeID: String
+    +value: String
+    
+}
+
+class Classroom {
+    +roomNumber: String
+    +capacity: Integer
+}
+
+School --> "many" Student
+School --> "many" Teacher 
+School --> "teches" Subject 
+School --> "many" Classroom 
+
+Subject --> "many" Student 
+Subject --> "taught by" Teacher 
+Subject --> "includes" Grade 
+
+@enduml
+
+
+
+
+
+SEQUENCE DIAGARAM
+
+
+@startuml
+
+actor Student
+participant School
+participant Teacher
+participant Subject
+participant Grade
+
+Student -> School: Get Admission()
+School -> Student: Confirm Admission()
+
+Student -> School: Attend Subject()
+School -> Subject: Add Student to Subject
+Subject -> Teacher: Assign Teacher to Subject
+Teacher -> Subject: Start Teaching
+
+Student -> Subject: Submit Assignment()
+Subject -> Teacher: Grade Assignment()
+Teacher -> Grade: Create Grade
+Grade -> Subject: Add Grade to Subject
+
+Student -> Subject: View Grades()
+Subject -> Grade: Retrieve Grades
+Grade -> Subject: Return Grades
+Subject -> Student: Display Grades
+
+@enduml
+
+
+
+
+
+ACTIVITY DIAGRAM - 
+
+
+@startuml
+:Start;
+
+:Apply for Admission;
+
+:Process Admission;
+if (Admission Approved?) then (Yes)
+    :Confirm Admission;
+else (No)
+    stop
+endif
+
+:Add Student to Subject;
+
+:Select an Action;
+if (Submit Assignment?) then (Yes)
+    :Submit Assignment;
+    :Grade Assignment;
+    :Create Grade;
+    :Add Grade to Subject;
+else (No)
+     :View Grades;
+     :Return Grades;
+     :Display Grades;
+endif
+
+:End;
+@enduml
+
+
+
+

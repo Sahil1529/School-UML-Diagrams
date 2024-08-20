@@ -1,0 +1,48 @@
+@startuml ClassDiagram
+class School {
+    +name: String
+    +address: String
+}
+
+class Student {
+    +studentID: String
+    +name: String
+    +gradeLevel: Integer
+    +viewGrades(): List<Grade>
+}
+
+class Teacher {
+    +teacherID: String
+    +name: String
+    +subject: String
+    +assignGrade(student: Student, grade: Grade): void
+}
+
+class Subject {
+    +SubjectID: String
+    +SubjectName: String
+    +Grades: Integer
+
+}
+
+class Grade {
+    +gradeID: String
+    +value: String
+    
+}
+
+class Classroom {
+    +roomNumber: String
+    +capacity: Integer
+}
+
+School --> "many" Student
+School --> "many" Teacher 
+School --> "many" Subject 
+School --> "many" Classroom 
+
+
+Subject --> "taught by" Teacher 
+Subject --> "includes" Grade 
+
+@enduml
