@@ -1,6 +1,6 @@
 @startuml Activity
 
-title Admission Process Activity Diagram
+title "Admission Process Activity Diagram"
 
 :Apply for Admission;
 :Complete admission formalities
