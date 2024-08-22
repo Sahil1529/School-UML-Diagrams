@@ -1,7 +1,9 @@
 @startuml Activity
 
-:Apply for Admission;
+title Admission Process Activity Diagram
 
+:Apply for Admission;
+:Complete admission formalities
 :Process Admission;
 if (Admission Approved?) then (Yes)
     :Confirm Admission;
