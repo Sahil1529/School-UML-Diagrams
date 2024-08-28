@@ -11,12 +11,13 @@ endif
 
 :Add Student to Subject;
 
-:Select an Action;
+:Assign Assignment;
 if (Submit Assignment?) then (Yes)
     :Submit Assignment;
     :Create Grade;
     :Add Grade to Subject;
 else (No)
+
      :View Grades;
      :Return Grades;
      :Display Grades;

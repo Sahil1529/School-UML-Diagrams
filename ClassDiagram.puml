@@ -2,12 +2,13 @@
 class School {
     +name: String
     +address: String
+    +openingtime: Integer
+    +closingTime :Integer
 }
 
 class Student {
     +studentID: String
     +name: String
-    +gradeLevel: Integer
     +viewGrades(): List<Grade>
 }
 
@@ -18,10 +19,19 @@ class Teacher {
     +assignGrade(student: Student, grade: Grade): void
 }
 
+class Exams {
+    +marks : Integer
+    +questionpapaer : String
+    +Subject: Integer
+    +TotalMarks : Integer
+
+}
+
 class Subject {
     +SubjectID: String
     +SubjectName: String
     +Grades: Integer
+    +Exams: String
 
 }
 
@@ -32,9 +42,10 @@ class Grade {
 }
 
 class Classroom {
-    +roomNumber: String
+    +roomNumber: Integer
     +capacity: Integer
 }
+
 
 School --> "many" Student
 School --> "many" Teacher 
@@ -44,5 +55,9 @@ School --> "many" Classroom
 
 Subject --> "taught by" Teacher 
 Subject --> "includes" Grade 
+
+Subject --> "takes" Exams
+
+Student --> "many" Grade
 
 @enduml

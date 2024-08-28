@@ -6,23 +6,24 @@ participant Teacher
 participant Subject
 participant Grade
 
-Student -> School: Get Admission()
-School -> Student: Confirm Admission()
+Student -> School: Get Admission
+School --> Student: Confirm Admission
 
-Student -> School: Attend Subject()
+Student -> School: Attend Subject
 School -> Subject: Add Student to Subject
-Subject -> Teacher: Assign Teacher to Subject
+Subject --> Teacher: Assign Teacher to Subject
 Teacher -> Subject: Start Teaching
 
-Student -> Subject: Submit Assignment()
-Subject -> Teacher: Grade Assignment()
+Student -> Subject: Submit Assignment
+Subject --> Teacher: Grade Assignment
 Teacher -> Grade: Create Grade
-Grade -> Subject: Add Grade to Subject
+Grade --> Subject: Add Grade to Subject
 
-Student -> Subject: View Grades()
+Student -> Subject: View Grades
 Subject -> Grade: Retrieve Grades
-Grade -> Subject: Return Grades
-Subject -> Student: Display Grades
+Grade --> Subject: Return Grades
+Subject --> Student: Display Grades
+
 
 @enduml
 
