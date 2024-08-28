@@ -15,6 +15,7 @@ class Student {
 class Teacher {
     +teacherID: String
     +name: String
+    +marks: Integer
     +subject: String
     +assignGrade(student: Student, grade: Grade): void
 }
